@@ -1,42 +1,38 @@
 #include<iostream>
 using namespace std;
 
-int main()
-{
-	int nr, nc; //nr: RowNumber, nc: ColumnNumber
 
-	cout << "Enter number of rows: "; cin >> nr;
-	cout << "Enter numner of columns: "; cin >> nc;
+int main(){
+    int r,c;
+    cout << "Enter number of rows: "; cin >> r;
+    cout << "Enter number of columns: "; cin >> c;
 
-	int matrix[nc][nr];
-	/* Following format
-	{
-	{* * * *},
-        {* * * *},
-	{* * * *}
-	}
-	*/
+    int matrix[r][c];
 
-	cout << "Enter elements of rows (seperate them with a space)\nPress Enter before writing elements of next row." << endl;
-
-	for(int i=1; i<=nr; ++i){
-		for(int j=1; j<=nc; ++j){
-			cin >> matrix[i][j];
+    int temp= 0, max_dig_len= 1;
+    cout << "Enter enteries of row (Sperate them with a space)\n";
+    for (int i=1; i<=r; ++i){
+        for (int j=1; j<=c; ++j){
+		cin >> matrix[i][j];
+		temp = matrix[i][j];
+		    while (temp > 9 || temp < -9){ temp /= 10; max_dig_len += 1;} 
 		}
-		if (i != nr ) cout << "Row " << i << " completed\nEnter the elements for row" << i+1 << endl;
-	}
-	cout << endl << endl;
-	// Displaying the matrix
-	cout << "[";
-	for (int i=1; i<= nr; ++i){
-		for(int j=1; j<= nc; ++j){
-			if (j != nc)cout << matrix[i][j] << " ";
-			if (j == nc)cout << matrix[i][j];
-		}
-		if (i != nr) cout << endl << " ";
-		if (i == nr) cout << "]";
-	}
+	  if (i!= r) cout << "Row " << i << " completed, Enter the next row\n";
+    }
 
 
-	return 0;
+    int sp=0;
+    for (int i=1; i<=r; ++i){
+        for (int j=1; j<=c; ++j){
+		    temp = matrix[i][j];
+		    while (temp > 9 || temp < -9) { temp /= 10; sp += 1;}
+		    for (int k=1; k<= max_dig_len - sp; ++k)
+		        cout << " ";
+		sp = 0;
+		cout << matrix[i][j];
+	  }
+        cout << endl;
+    }
+
+    return 0;
 }
