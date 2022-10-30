@@ -39,7 +39,7 @@ int main()
                             if (i!= r) cout << "Row " << i << " completed, Enter the next row\n";
                         }
                     
-                    cout << "Matrix " << mat << " completed\nSELECT (Enter -1 to go back)\n1)MatrixA\n2)MatrixB\n3)MatrixC\n4)MatrixD\n5)MatrixD\n";
+                    cout << "Matrix " << mat+1 << " completed\nSELECT (Enter -1 to go back)\n1)MatrixA\n2)MatrixB\n3)MatrixC\n4)MatrixD\n5)MatrixD\n";
                     cin >> mat;
                     mat -= 1;
                 }
@@ -47,7 +47,7 @@ int main()
 
             case 2:
                 mat=0;
-                cout << "SELECT Matrix to be displayed\n1)MatrixA    2)MatrixB\n3)MatrixC    4)MatrixD\n5)MatrixD\n: ";
+                cout << "SELECT Matrix to be displayed\n1)MatrixA    2)MatrixB\n3)MatrixC    4)MatrixD\n5)MatrixE\n: ";
                 cin >> mat;
                 mat -= 1;
                 while (mat != -2){
@@ -190,15 +190,16 @@ int main()
                                 }
                             }
                             cout << "UPDATE COMPLETE" << endl;
+                        }
                         cout << "SELECT Matrix to multiply matrix with(-1 to go back)\n1)MatrixA    2)MatrixB\n3)MatrixC    4)MatrixD\n5)MatrixE\n: ";
                         cin >> mat;
                         mat -= 1;
-                        }
                     }
                 }
                 else if (matrix[mat][0][3] == 0){
                     cout << "Please first define the matrix to use it\n"; continue;
                 }
+                break;
 
             
             case 4:
@@ -397,13 +398,31 @@ int main()
                     cout << "Matrix not defined\n"; continue;
                 }
         
+
+            case 5:
+                short int op=0;
+                cout << "Choose Operation\n1)Addition (+)        2)Subtraction (-)\n3)Multiplication (x)        4)Division (/)\n: ";
+                cin >> op;
+                switch(op){
+                    case 1:
+                        int mats[5] = {0};
+                        cout << "Select Matrixes for addition\n1)MatrixA    2)MatrixB\n3)MatrixC    4)MatrixD\n5)MatrixE\n: ";
+                        cin >> mats[0];
+                        mats[0] -= 1;
+                        if (matrix[mats[0]][0][3] == 1){
+                            for (int i=1; i<5 ,++i){
+                                cout << "Select Matrixes for addition\n1)MatrixA    2)MatrixB\n3)MatrixC    4)MatrixD\n5)MatrixE\n: ";
+                                cin >> mats[i];
+                                if (matrix[mats[i]][0][3] == ) cout << "Matrix not defined\nSelect another\n: "; --i;
+                            }
+                        }
+                }
+
+
+
+
+
         
-
-
-
-
-
-
         }
     }
 }
